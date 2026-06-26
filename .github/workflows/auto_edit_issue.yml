@@ -66,7 +66,7 @@ jobs:
             const appendRegex = new RegExp(`(${declarationHeading}\\s*\\n\\s*)([\\s\\S]*?)(?=\\n### |$)`);
 
             if (appendRegex.test(body)) {
-              const newSections = "\n <!--The following sections are automatically maintained in the review process. Do not edit them manually-->\n\n ## Review data \n\n### Submission editor \n <!--editor-->Pending<!--end-editor-->\n\n### Submission reviewers \n <!--reviewers-->Pending<!--end-reviewers-->\n";
+              const newSections = "\n <!--The following sections are automatically maintained in the review process. Do not edit them manually-->\n\n ## Review data \n\n### Submission editor \n <!--editor-->Pending<!--end-editor-->\n\n### Submission reviewers \n <!--reviewers-list-->Pending<!--end-reviewers-list-->\n";
               
               // Puts back the heading ($1), the user's response ($2), and glues the new sections right after
               body = body.replace(appendRegex, `$1$2${newSections}`);
