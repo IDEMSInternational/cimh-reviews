@@ -6,10 +6,10 @@ For a list of things I can do to help you, just type:
 @{{bot_name}} help
 ```
 
-For example, to set the repository for your review submission, type:
+For example, to update the pdf file for your submission, type:
 
 ```
-@{{bot_name}} set <repository_url> as repository
+@{{bot_name}} set <pdf_url> as pdf
 ```
 
-replacing `<repository_url>` with the full github address, for example `https://github.com/username/repository`.
+replacing `<pdf_url>` with a full, publicly-accessible link.
