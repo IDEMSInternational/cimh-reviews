@@ -1,0 +1,86 @@
+name: Advanced Auto-Edit Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-issue-form:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Form Enhancer
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            let body = issue.body;
+
+            if (!body) return;
+
+            // Standardize line endings right away
+            body = body.replace(/\r\n/g, '\n');
+
+            // ==========================================================
+            // 1. CONFIGURATION: Define your properties and tags here
+            // ==========================================================
+            const propertiesToWrap = [
+              { 
+                heading: "### Git repository of the source file", 
+                startTag: "<!--repository-->", 
+                endTag: "<!--end-repository-->" 
+              },
+              { 
+                heading: "### Author's Github username", 
+                startTag: "<!--author-->", 
+                endTag: "<!--end-author-->" 
+              },
+              { 
+                heading: "### Link to current compiled .pdf version", 
+                startTag: "<!--pdf-->", 
+                endTag: "<!--end-pdf-->" 
+              }          
+            ];
+
+            // ==========================================================
+            // 2. LOOP: Cycle through and apply tags to each property
+            // ==========================================================
+            propertiesToWrap.forEach(prop => {
+              // Matches the heading, tracking spaces, and the text entry line
+              const regex = new RegExp(`(${prop.heading}\\s*\\n\\s*)(.+)`);
+              
+              if (regex.test(body)) {
+                body = body.replace(regex, `$1${prop.startTag}$2${prop.endTag}`);
+                console.log(`Wrapped ${prop.heading} successfully.`);
+              }
+            });
+
+            // ==========================================================
+            // 3. APPEND: Find "Declaration" and attach the new sections
+            // ==========================================================
+            const declarationHeading = "### Declaration";
+            
+            // This regex captures the Declaration heading ($1) and EVERYTHING 
+            // after it ($2) until it hits the next markdown section (###) OR the end of the text.
+            const appendRegex = new RegExp(`(${declarationHeading}\\s*\\n\\s*)([\\s\\S]*?)(?=\\n### |$)`);
+
+            if (appendRegex.test(body)) {
+              const newSections = "\n <!--The following sections are automatically maintained in the review process. Do not edit them manually-->\n\n ## Review data \n\n### Submission editor \n <!--editor-->Pending<!--end-editor-->\n\n### Submission reviewers \n <!--reviewers-->Pending<!--end-reviewers-->\n";
+              
+              // Puts back the heading ($1), the user's response ($2), and glues the new sections right after
+              body = body.replace(appendRegex, `$1$2${newSections}`);
+              console.log("Appended Editor and Reviewer sections after Declaration.");
+            } else {
+              console.log("Could not find the '### Declaration' section to append to.");
+            }
+
+            // ==========================================================
+            // 4. SAVE: Update the GitHub Issue
+            // ==========================================================
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: body
+            });
