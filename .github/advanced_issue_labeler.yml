@@ -1,0 +1,11 @@
+policy:
+  - section:
+      - id: [report-type]
+        block-list: ['None', 'Other']
+        label:
+          - name: 'report: inventory'
+            keys: ['Inventory (e.g. data quantity)']
+          - name: 'report: quality'
+            keys: ['Data quality (e.g. data accuracy/consistency)']
+          - name: 'report: product'
+            keys: ['Product (e.g. data analysis)']
