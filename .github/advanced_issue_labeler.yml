@@ -1,6 +1,6 @@
 policy:
   - section:
-      - id: [report-type]
+      - id: ['report-type']
         block-list: ['None', 'Other']
         label:
           - name: 'report: inventory'
