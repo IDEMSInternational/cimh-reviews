@@ -20,9 +20,11 @@ body:
   id: report-type
   attributes:
     label: "Type of report"
-    description: "Select one"
+    description: "Select one..."
     options:
-      - "Report"
+      - "Inventory (e.g. data quantity)"
+      - "Data quality (e.g. data accuracy/consistency)"
+      - "Product (e.g. data analysis)"
       - "Other"
   validations:
     required: true
