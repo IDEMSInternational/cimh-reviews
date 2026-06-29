@@ -42,7 +42,7 @@ jobs:
                 endTag: "<!--end-pdf-->" 
               },
               {
-                heading: "### Report type",
+                heading: "### Type of report",
                 startTag: "<!--report-type-->",
                 endTag: "<!--end-report-type-->"
               }
