@@ -4,8 +4,8 @@ policy:
         block-list: ['None', 'Other']
         label:
           - name: 'report: inventory'
-            keys: ['Inventory (e.g. data quantity)']
+            keys: ['Inventory']
           - name: 'report: quality'
-            keys: ['Data quality (e.g. data accuracy/consistency)']
+            keys: ['Data quality']
           - name: 'report: product'
-            keys: ['Product (e.g. data analysis)']
+            keys: ['Product']
