@@ -40,7 +40,12 @@ jobs:
                 heading: "### Link to current compiled .pdf version", 
                 startTag: "<!--pdf-->", 
                 endTag: "<!--end-pdf-->" 
-              }          
+              },
+              {
+                heading: "### Report type",
+                startTag: "<!--report-type-->",
+                endTag: "<!--end-report-type-->"
+              }
             ];
 
             // ==========================================================
