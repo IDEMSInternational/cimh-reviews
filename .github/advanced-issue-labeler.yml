@@ -13,7 +13,7 @@ policy:
         block-list: ['None', 'Other']
         label:
           - name: 'type: new submission'
-            keys: ['New Submission']
+            keys: ['New submission']
           - name: 'type: resubmission'
             keys: ['Resubmission']
           - name: 'type: major revision'
