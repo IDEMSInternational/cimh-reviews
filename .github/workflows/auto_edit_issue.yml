@@ -30,7 +30,7 @@ jobs:
                 heading: "### Git repository of the source file", 
                 startTag: "<!--repository-->", 
                 endTag: "<!--end-repository-->",
-                isLink: true
+                isLink: false
               },
               { 
                 heading: "### Author's Github username", 
@@ -42,7 +42,7 @@ jobs:
                 heading: "### Link to current compiled .pdf version", 
                 startTag: "<!--pdf-->", 
                 endTag: "<!--end-pdf-->",
-                isLink: true
+                isLink: false
               },
               {
                 heading: "### Type of report",
@@ -86,7 +86,7 @@ jobs:
             const appendRegex = new RegExp(`(${declarationHeading}\\s*\\n\\s*)([\\s\\S]*?)(?=\\n### |$)`);
 
             if (appendRegex.test(body)) {
-              const newSections = "\n <!--The following sections are automatically maintained in the review process. Do not edit them manually-->\n\n ## Review data \n\n### Submission editor \n <!--editor-->Pending<!--end-editor-->\n\n### Submission reviewers \n <!--reviewers-list-->Pending<!--end-reviewers-list-->\n";
+              const newSections = "\n <!--The following sections are automatically maintained in the review process. Do not edit them manually-->\n\n ## Review data \n\n### Submission editor \n <!--editor-->Pending<!--end-editor-->\n\n### Submission reviewers \n <!--reviewers-list-->Pending<!--end-reviewers-list-->\n"\n\n### Submission archive \n <!--archive-->Pending<!--archive-->\n";
               
               // Puts back the heading ($1), the user's response ($2), and glues the new sections right after
               body = body.replace(appendRegex, `$1$2${newSections}`);
