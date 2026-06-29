@@ -1,14 +1,14 @@
 ## Data quality review checklist for @{{sender}}
 
-*The author submitted stated their report type is {{report-type}}. Check that you have generated the right checklist.*
+*The author submitted stated their report type is **{{report-type}}**. Check that you have generated the right checklist.*
 
 ### Conflict of interest
 
-- [ ] I confirm that I have no conflicts of interest (COIs) with reviewing this work by (@{{author}}), or that any perceived COIs have been waived by the editors for the purpose of this review.
+- [ ] **Conflict of interest:** I confirm that I have no conflicts of interest (COIs) with reviewing this work by (@{{author}}), or that any perceived COIs have been waived by the editors for the purpose of this review.
 
 ### Code of conduct
 
-- [ ] I confirm that I have read and will adhere to the [code of conduct](https://github.com/IDEMSInternational/cimh-reviews/blob/main/code_of_conduct.md).
+- [ ] **Code of conduct:** I confirm that I have read and will adhere to the [code of conduct](https://github.com/IDEMSInternational/cimh-reviews/blob/main/code_of_conduct.md).
 
 ### General checks
 
