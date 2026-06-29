@@ -5,7 +5,7 @@ policy:
         label:
           - name: 'report: inventory'
             keys: ['Inventory']
-          - name: 'report: quality'
+          - name: 'report: data quality'
             keys: ['Data quality']
           - name: 'report: product'
             keys: ['Product']
