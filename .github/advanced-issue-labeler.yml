@@ -16,3 +16,5 @@ policy:
               keys: ['New Submission']
             - name: 'type: resubmission'
               keys: ['Resubmission']
+            - name: 'type: major revision'
+              keys: ['Major revision']
