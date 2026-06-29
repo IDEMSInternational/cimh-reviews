@@ -22,9 +22,9 @@ body:
     label: "Type of report"
     description: "Select one..."
     options:
-      - "Inventory (e.g. data quantity)"
-      - "Data quality (e.g. data accuracy/consistency)"
-      - "Product (e.g. data analysis)"
+      - "Inventory"
+      - "Data quality"
+      - "Product"
       - "Other"
   validations:
     required: true
