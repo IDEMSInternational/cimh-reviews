@@ -9,12 +9,12 @@ policy:
             keys: ['Data quality']
           - name: 'report: product'
             keys: ['Product']
-        - id: ['submission-type']
-          block-list: ['None', 'Other']
-          label:
-            - name: 'type: new submission'
-              keys: ['New Submission']
-            - name: 'type: resubmission'
-              keys: ['Resubmission']
-            - name: 'type: major revision'
-              keys: ['Major revision']
+      - id: ['submission-type']
+        block-list: ['None', 'Other']
+        label:
+          - name: 'type: new submission'
+            keys: ['New Submission']
+          - name: 'type: resubmission'
+            keys: ['Resubmission']
+          - name: 'type: major revision'
+            keys: ['Major revision']
