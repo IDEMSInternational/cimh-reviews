@@ -29,22 +29,26 @@ jobs:
               { 
                 heading: "### Git repository of the source file", 
                 startTag: "<!--repository-->", 
-                endTag: "<!--end-repository-->" 
+                endTag: "<!--end-repository-->",
+                isLink: true
               },
               { 
                 heading: "### Author's Github username", 
                 startTag: "<!--author-->", 
-                endTag: "<!--end-author-->" 
+                endTag: "<!--end-author-->",
+                isLink: false
               },
               { 
                 heading: "### Link to current compiled .pdf version", 
                 startTag: "<!--pdf-->", 
-                endTag: "<!--end-pdf-->" 
+                endTag: "<!--end-pdf-->",
+                isLink: true
               },
               {
                 heading: "### Type of report",
                 startTag: "<!--report-type-->",
-                endTag: "<!--end-report-type-->"
+                endTag: "<!--end-report-type-->",
+                isLink: false
               }
             ];
 
@@ -52,12 +56,23 @@ jobs:
             // 2. LOOP: Cycle through and apply tags to each property
             // ==========================================================
             propertiesToWrap.forEach(prop => {
-              // Matches the heading, tracking spaces, and the text entry line
               const regex = new RegExp(`(${prop.heading}\\s*\\n\\s*)(.+)`);
               
               if (regex.test(body)) {
-                body = body.replace(regex, `$1${prop.startTag}$2${prop.endTag}`);
-                console.log(`Wrapped ${prop.heading} successfully.`);
+                // We use a function here to dynamically manipulate the user's input (p2)
+                body = body.replace(regex, (match, p1, p2) => {
+                  let value = p2.trim();
+            
+                  // If the config says it's a link, convert the URL to Markdown syntax: [url](url)
+                  if (prop.isLink) {
+                    value = `[${value}](${value})`;
+                  }
+            
+                  // Put it all together: Heading + Start Tag + Value (Link or Text) + End Tag
+                  return `${p1}${prop.startTag}${value}${prop.endTag}`;
+                });
+            
+                console.log(`Processed ${prop.heading} successfully.`);
               }
             });
 
