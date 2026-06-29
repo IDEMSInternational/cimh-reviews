@@ -32,6 +32,7 @@ jobs:
         with:
           issue-form: ${{ steps.issue-parser.outputs.jsonString }}
           section: report-type
+          cofig-path: .github/advanced-issue-labeler.yml
           token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Set labels based on submission type field
